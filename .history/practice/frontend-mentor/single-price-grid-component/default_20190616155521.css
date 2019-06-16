@@ -81,29 +81,6 @@ body {
     line-height: 1.5;
 }
 
-.text-caption {
-    font-size: 0.875rem;
-    letter-spacing: 0.02em;
-}
-
-/*
- * page
- */
-.page-main__header {
-    padding: 4rem 0;
-}
-
-.page-main__title {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1.2;
-}
-
-.page-footer {
-    padding: 2rem 0;
-}
-
 
 /*
  * single-price
@@ -168,16 +145,16 @@ body {
  * specific
  */
 
-.single-price__cta .text-display1 {
+.single-price2 .text-display1 {
     margin-right: 0.5rem;
 }
 
-.single-price__feature .newline {
+.single-price3 .newline {
     display: none;
 }
 
 @media (min-width: 44rem) {
-    .single-price__feature .newline {
+    .single-price3 .newline {
         display: block;
     }
 }
