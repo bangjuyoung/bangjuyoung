@@ -46,8 +46,12 @@ body {
     display: block;
 }
 
-.text-center {
-    text-align: center;
+
+/*
+ * page
+ */
+.page-header {
+    padding: 3rem 0;
 }
 
 

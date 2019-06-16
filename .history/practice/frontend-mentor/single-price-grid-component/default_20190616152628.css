@@ -52,6 +52,20 @@ body {
 
 
 /*
+ * page
+ */
+.page-header {
+    padding: 3rem 0;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+
+/*
  * single-price
  */
 .single-price__wrapper {

@@ -46,10 +46,6 @@ body {
     display: block;
 }
 
-.text-center {
-    text-align: center;
-}
-
 
 /*
  * single-price
@@ -75,7 +71,7 @@ body {
     padding: 2.5rem 3rem;
 }
 
-@media (min-width: 44rem) {
+@media (min-width: 46rem) {
     .single-price__wrapper {
         max-width: 42rem;
     }
