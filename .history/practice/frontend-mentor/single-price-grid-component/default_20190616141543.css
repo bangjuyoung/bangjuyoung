@@ -113,16 +113,6 @@ body {
     margin-right: 0.5rem;
 }
 
-.single-price3 .newline {
-    display: none;
-}
-
-@media (min-width: 74rem) {
-    .single-price3 .newline {
-        display: block;
-    }
-}
-
 
 /*
  * theme

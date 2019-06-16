@@ -37,10 +37,6 @@ body {
     box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.08);
 }
 
-.newline {
-    display: block;
-}
-
 
 /*
  * single-price
@@ -100,27 +96,7 @@ body {
 }
 
 .single-price__body2 {
-    font-size: 0.875rem;
-    line-height: 1.5;
-}
-
-
-/*
- * specific
- */
-
-.single-price2 .single-price__display1 {
-    margin-right: 0.5rem;
-}
-
-.single-price3 .newline {
-    display: none;
-}
-
-@media (min-width: 74rem) {
-    .single-price3 .newline {
-        display: block;
-    }
+    font-size: 0.9375rem;
 }
 
 

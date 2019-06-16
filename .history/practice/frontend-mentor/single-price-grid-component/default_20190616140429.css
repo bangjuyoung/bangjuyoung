@@ -19,7 +19,7 @@ body {
 .btn {
     display: inline-block;
     padding: 0.75rem 1.25rem;
-    font-size: 0.9375rem;
+    font-size: 0.9725rem;
     text-align: center;
     border: 1px solid transparent;
     border-radius: 0.25rem;
@@ -35,10 +35,6 @@ body {
 
 .btn--float {
     box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.08);
-}
-
-.newline {
-    display: block;
 }
 
 
@@ -97,30 +93,6 @@ body {
     font-weight: 700;
     letter-spacing: 0;
     line-height: 1;
-}
-
-.single-price__body2 {
-    font-size: 0.875rem;
-    line-height: 1.5;
-}
-
-
-/*
- * specific
- */
-
-.single-price2 .single-price__display1 {
-    margin-right: 0.5rem;
-}
-
-.single-price3 .newline {
-    display: none;
-}
-
-@media (min-width: 74rem) {
-    .single-price3 .newline {
-        display: block;
-    }
 }
 
 
