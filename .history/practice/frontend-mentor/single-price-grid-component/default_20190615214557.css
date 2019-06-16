@@ -24,6 +24,7 @@ body {
     max-width: 36rem;
     margin-left: auto;
     margin-right: auto;
+    background: url('./design/desktop-design.jpg') no-repeat 50% 50%;
 }
 
 .single-price__divider {

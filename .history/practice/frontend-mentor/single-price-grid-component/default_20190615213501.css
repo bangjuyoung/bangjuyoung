@@ -6,20 +6,14 @@ html {
 
 body {
     font-family: 'Karla', sans-serif;
-    letter-spacing: -0.013em;
-    line-height: 1.44;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 74rem) {
     html {
         font-size: 16px;
     }
 }
 
-
-/*
- * single-price
- */
 .single-price {
     max-width: 36rem;
     margin-left: auto;
@@ -63,6 +57,6 @@ body {
     color: hsl(71, 73%, 54%);
 }
 
-.text-gray--pale {
+.text-muted {
     color: hsl(204, 43%, 93%);
 }
