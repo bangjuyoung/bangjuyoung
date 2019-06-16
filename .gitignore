@@ -1,4 +1,5 @@
 ## Ignore custom files
+.history
 .DS_Store
 CNAME
 
