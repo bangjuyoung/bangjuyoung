@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+/*
+ * utils
+ */
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.sr-only {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    white-space: nowrap;
+    border: 0;
+}
+
+/*
+ * container
+ */
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
