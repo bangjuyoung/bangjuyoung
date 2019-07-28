@@ -22,6 +22,7 @@
     border: 0;
 }
 
+
 /*
  * container
  */
@@ -31,4 +32,35 @@
     margin-right: auto;
     padding-left: 16px;
     padding-right: 16px;
+}
+
+
+/*
+ * grid
+ */
+.row {
+    margin-left: -16px;
+    margin-right: -16px;
+}
+
+.row::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+[class*="col"] {
+    float: left;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.col-xs-12 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .col-md-5 {
+        width: 41.6666%;
+    }
 }
