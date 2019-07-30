@@ -36,6 +36,22 @@
 
 
 /*
+ * align
+ */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+/*
  * grid
  */
 .row {
@@ -63,4 +79,20 @@
     .col-md-5 {
         width: 41.6666%;
     }
+}
+
+
+/*
+ * link
+ */
+.link--lined {
+    text-decoration: underline;
+}
+
+
+/*
+ * text
+ */
+.text-uppercase {
+    text-transform: uppercase;
 }

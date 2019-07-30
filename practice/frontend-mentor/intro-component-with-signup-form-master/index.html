@@ -12,53 +12,66 @@
   <link rel="stylesheet" href="./default.css">
 </head>
 
-<body class="page page-singup theme-primary">
-  <h1 class="sr-only">Sign Up</h1>
+<body class="theme-primary page page-singup">
+  <div class="text-center page-header">
+    <div class="container">
+      <h1 class="page-title">Intro component with sign up form</h1>
+    </div>
+  </div>
 
   <main class="container page-signup__main">
     <section class="page-signup__intro">
-      <h2 class="page-signup__divider">Learn to code by watching others</h2>
+      <h2 class="text-headline page-signup__intro-title">Learn to code by <span class="newline"></span>watching others
+      </h2>
       <p>
         See how experienced developers solve problems in real-time. Watching scripted tutorials is great,
         but understanding how developers think is invaluable.
       </p>
     </section>
     <section class="page-signup__trial">
-      <div class="divider">
-        <h3><strong>Try it free 7 days</strong> then $20/mo. thereafter</h3>
+      <div class="divider-md theme-accent text-center card card-sm card-body card-shadow page-signup__trial-info">
+        <h3 class="text-body2"><strong>Try it free 7 days</strong> then <span class="newline"></span> $20/mo. thereafter
+        </h3>
       </div>
-      <form>
+      <form class="theme-white card-shadow card card-body">
         <fieldset>
           <legend class="sr-only">Sign Up Form</legend>
-          <div>
-            <label for="firstName">First Name</label>
-            <input type="text" name="firstName" id="firstName">
+          <div class="form-group form-group--v1">
+            <label for="firstName" class="control-label">First Name</label>
+            <input type="text" name="firstName" id="firstName" class="form-control">
           </div>
-          <div>
-            <label for="lastName">Last Name</label>
-            <input type="text" name="firstName" id="lastName">
+          <div class="form-group form-group--v1">
+            <label for="lastName" class="control-label">Last Name</label>
+            <input type="text" name="firstName" id="lastName" class="form-control">
           </div>
-          <div>
-            <label for="email">Email Address</label>
-            <input type="email" name="email" id="email">
+          <div class="form-group form-group--v1">
+            <label for="email" class="control-label">Email Address</label>
+            <input type="email" name="email" id="email" class="form-control">
           </div>
-          <div>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
+          <div class="form-group form-group--v1">
+            <label for="password" class="control-label">Password</label>
+            <input type="password" name="password" id="password" class="form-control">
           </div>
-          <input type="submit" value="Claim your free trial">
-          <p>By clicking the button, you are agreeing to our Terms and Services</p>
+          <div class="form-group">
+            <input type="submit" value="Claim your free trial"
+              class="text-uppercase btn btn-block btn-shadow btn-secondary">
+          </div>
+          <p class="text-center text-gray text-caption page-signup__term-info">
+            By clicking the button, you are agreeing to<span class="newline"></span>
+            our <strong class="text-primary">Terms and Services</strong>
+          </p>
         </fieldset>
       </form>
     </section>
   </main>
 
-  <footer role="contentinfo">
+  <footer role="contentinfo" class="page-footer">
     <div class="container">
-      <p>
-        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-        Coded by <a href="https://bangjuyoung.app" target="_blank" rel="noreferrer"
-          title="open new window">BANGJUYOUNG</a>.
+      <p class="text-caption text-center">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" title="open new window"
+          class="text-accent link--lined">Frontend Mentor</a>. <span class="newline"></span>
+        Coded by <a href="https://bangjuyoung.app" target="_blank" rel="noreferrer" title="open new window"
+          class="text-accent link--lined">BANGJUYOUNG</a>.
       </p>
     </div>
   </footer>
