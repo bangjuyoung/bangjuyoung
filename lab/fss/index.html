@@ -11,6 +11,7 @@
     <h1>은행검색</h1>
     <input type="text" placeholder="은행이름을 입력해 주세요.">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         const {
             ajax
@@ -26,16 +27,23 @@
         const url =
             `//api.github.com/users?per_page=2`;
 
-        const company$ =
-            ajax({
-                url: '//finlife.fss.or.kr/finlifeapi/companySearch.json?auth=6f313c1823cbe82f27ef6828b37100f7&topFinGrpNo=020000&pageNo=1',
-                method: 'GET'
-            });
+        const company$ = ajax.getJSON('//jsonplaceholder.typicode.com/todos');
+
 
         company$.subscribe(
             res => console.log(res),
             err => console.error(err)
-        )
+        );
+
+        /*
+        $.ajax({
+            method: "GET",
+            url: '//finlife.fss.or.kr/finlifeapi/companySearch.json?auth=6f313c1823cbe82f27ef6828b37100f7&topFinGrpNo=020000&pageNo=1',
+            dataType: "application/json"
+        }).done(function (data) {
+            console.log(data)
+        });
+        */
     </script>
 </body>
 
