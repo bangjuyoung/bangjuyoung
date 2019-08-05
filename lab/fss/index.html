@@ -20,10 +20,17 @@
             map
         } = rxjs.operators;
 
-        const url =
-            '//finlife.fss.or.kr/finlifeapi/companySearch.json?auth=6f313c1823cbe82f27ef6828b37100f7&topFinGrpNo=020000&pageNo=1';
+        const auth = '6f313c1823cbe82f27ef6828b37100f7';
+        const baseURL = 'http://finlife.fss.or.kr/finlifeapi/companySearch.xml';
 
-        const company$ = ajax(url);
+        const url =
+            `//api.github.com/users?per_page=2`;
+
+        const company$ =
+            ajax({
+                url: '//finlife.fss.or.kr/finlifeapi/companySearch.json?auth=6f313c1823cbe82f27ef6828b37100f7&topFinGrpNo=020000&pageNo=1',
+                method: 'GET'
+            });
 
         company$.subscribe(
             res => console.log(res),
