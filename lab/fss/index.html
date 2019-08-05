@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>금융상품통합비교공시</title>
+</head>
+
+<body>
+    <h1>은행검색</h1>
+    <input type="text" placeholder="은행이름을 입력해 주세요.">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.min.js"></script>
+    <script>
+        const {
+            ajax
+        } = rxjs.ajax;
+
+        const url =
+            'http://finlife.fss.or.kr/finlifeapi/companySearch.json?auth=6f313c1823cbe82f27ef6828b37100f7&topFinGrpNo=020000&pageNo=1';
+
+        const company$ = ajax(url);
+
+        company$.subscribe(
+            res => console.log,
+            err => console.error,
+            () => console.log('complete')
+        );
+    </script>
+</body>
+
+</html>
