@@ -16,16 +16,19 @@
             ajax
         } = rxjs.ajax;
 
+        const {
+            map
+        } = rxjs.operators;
+
         const url =
-            'http://finlife.fss.or.kr/finlifeapi/companySearch.json?auth=6f313c1823cbe82f27ef6828b37100f7&topFinGrpNo=020000&pageNo=1';
+            '//finlife.fss.or.kr/finlifeapi/companySearch.json?auth=6f313c1823cbe82f27ef6828b37100f7&topFinGrpNo=020000&pageNo=1';
 
         const company$ = ajax(url);
 
         company$.subscribe(
-            res => console.log,
-            err => console.error,
-            () => console.log('complete')
-        );
+            res => console.log(res),
+            err => console.error(err)
+        )
     </script>
 </body>
 
