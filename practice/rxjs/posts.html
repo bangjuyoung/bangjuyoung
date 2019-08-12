@@ -58,10 +58,7 @@
         selectType$.pipe(
             map(type => ajax({
                 url: FSS_BASE_URL,
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                method: 'GET'
             })),
             mergeAll()
         ).subscribe(
