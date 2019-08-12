@@ -4,46 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>금융상품통합비교공시</title>
+    <title>JSON Placeholder</title>
 </head>
 
 <body>
-    <h1>은행검색</h1>
-    <input type="text" placeholder="은행이름을 입력해 주세요.">
+    <h1>JSON Placeholder POSTS</h1>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         const {
             ajax
         } = rxjs.ajax;
 
         const {
-            map
+            pluck,
+            map,
+            tap
         } = rxjs.operators;
 
-        const auth = '6f313c1823cbe82f27ef6828b37100f7';
-        const baseURL = 'http://finlife.fss.or.kr/finlifeapi/companySearch.xml';
+        const baseURL = '//jsonplaceholder.typicode.com';
 
-        const url =
-            `//api.github.com/users?per_page=2`;
-
-        const company$ = ajax.getJSON('//jsonplaceholder.typicode.com/todos');
-
-
-        company$.subscribe(
-            res => console.log(res),
-            err => console.error(err)
+        const posts$ = ajax({
+            method: 'GET',
+            url: `${baseURL}/posts?_start=0&_limit=10`
+        }).pipe(
+            pluck('response')
         );
 
-        /*
-        $.ajax({
-            method: "GET",
-            url: '//finlife.fss.or.kr/finlifeapi/companySearch.json?auth=6f313c1823cbe82f27ef6828b37100f7&topFinGrpNo=020000&pageNo=1',
-            dataType: "application/json"
-        }).done(function (data) {
-            console.log(data)
-        });
-        */
+        posts$.subscribe(
+            posts => makePosts(posts),
+            err => console.error(err),
+            () => console.log('complete')
+        );
+
+        function makePosts(posts) {
+            const postString = posts.reduce((acc, post, index) => {
+                return `${acc}<li>${post.title}</li>`;
+            }, '');
+
+            const fragment = document.createDocumentFragment();
+            fragment.appendChild(postString);
+
+            console.log(fragment);
+        }
     </script>
 </body>
 

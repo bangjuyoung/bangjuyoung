@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RxJS | 자동완성</title>
+</head>
+
+<body>
+    <h1>자동완성</h1>
+    <input type="text" id="search" placeholder="github 사용자를 입력해 주세요.">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.min.js"></script>
+    <script>
+        const {
+            fromEvent
+        } = rxjs;
+
+        const {
+            ajax
+        } = rxjs.ajax;
+
+        const {
+            map,
+            mergeMap,
+            debounceTime,
+            filter,
+            distinctUntilChanged
+        } = rxjs.operators;
+
+        const user$ = fromEvent(document.getElementById('search'), 'keyup')
+            .pipe(
+                debounceTime(300),
+                map(event => event.target.value),
+                distinctUntilChanged(),
+                filter(query => query.length > 0),
+                mergeMap(query => ajax.getJSON(`https://api.github.com/search/users?q=${query}`))
+            );
+
+        user$.subscribe(
+            res => console.log(res),
+            err => console.error(err),
+            () => console.log('complete')
+        );
+    </script>
+</body>
+
+</html>

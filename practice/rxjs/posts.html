@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Posts</title>
+</head>
+
+<body>
+    <h1>금융회사 검색</h1>
+
+    <select name="type" id="fssType">
+        <option value="searchCompany">금융회사 조회</option>
+        <option value="depositProductsSearch">정기예금 조회</option>
+    </select>
+
+    <select id="fssGroupCode">
+        <option value="020000">은행</option>
+        <option value="030200">여신전문</option>
+        <option value="030300">저축은행</option>
+        <option value="050000">보험</option>
+        <option value="060000">금융투자</option>
+    </select>
+    <input type="text" placeholder="금융 회사명을 입력해 주세요">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.min.js"></script>
+    <script>
+        const FSS_BASE_URL = 'https://bangjuyoung.io/proxy/fss';
+        const FSS_DEFAULT_TYPE = 'searchCompany';
+
+        const $selectType = document.getElementById('fssType');
+        const $selectGroupCode = document.getElementById('fssGroupCode');
+
+        const {
+            fromEvent
+        } = rxjs;
+
+        const {
+            map,
+            mergeAll
+        } = rxjs.operators;
+
+        const {
+            ajax
+        } = rxjs.ajax;
+
+        function getEventValue(obs$) {
+            return obs$.pipe(
+                map(event => event.target.value)
+            )
+        }
+
+        const selectType$ = fromEvent($selectType, 'change').pipe(getEventValue);
+        const selectGroupCode$ = fromEvent($selectGroupCode, 'change').pipe(getEventValue);
+
+        selectType$.pipe(
+            map(type => ajax({
+                url: FSS_BASE_URL,
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })),
+            mergeAll()
+        ).subscribe(
+            res => console.log(res)
+        );
+    </script>
+</body>
+
+</html>
