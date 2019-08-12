@@ -11,9 +11,15 @@
 <body>
     <h1>금융회사 검색</h1>
 
-    <select name="type" id="fssType">
-        <option value="searchCompany">금융회사 조회</option>
-        <option value="depositProductsSearch">정기예금 조회</option>
+    <select id="fssType">
+        <option value="companySearch">금융회사</option>
+        <option value="depositProductsSearch">정기예금</option>
+        <option value="savingProductsSearch">적금</option>
+        <option value="annuitySavingProductsSearch">연금저축</option>
+        <option value="mortgageLoanProductsSearch">주택담보대출</option>
+        <option value="mortgageLoanProductsSearch">주택담보대출</option>
+        <option value="rentHouseLoanProductsSearch">전세자금대출</option>
+        <option value="creditLoanProductsSearch">개인신용대출</option>
     </select>
 
     <select id="fssGroupCode">
@@ -23,23 +29,33 @@
         <option value="050000">보험</option>
         <option value="060000">금융투자</option>
     </select>
-    <input type="text" placeholder="금융 회사명을 입력해 주세요">
+
+    <input type="text" placeholder="금융 회사명을 입력해 주세요" id="fssCode">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.min.js"></script>
     <script>
         const FSS_BASE_URL = 'https://bangjuyoung.io/proxy/fss';
-        const FSS_DEFAULT_TYPE = 'searchCompany';
+        const FSS_DEFAULT = {
+            type: 'companySearch',
+            topFinGrpNo: '020000',
+            pageNo: 1,
+            financeCd: ''
+        };
 
         const $selectType = document.getElementById('fssType');
         const $selectGroupCode = document.getElementById('fssGroupCode');
+        const $inputCode = document.getElementById('fssCode');
 
         const {
-            fromEvent
+            fromEvent,
+            merge
         } = rxjs;
 
         const {
+            tap,
             map,
-            mergeAll
+            mergeAll,
+            scan
         } = rxjs.operators;
 
         const {
@@ -52,16 +68,51 @@
             )
         }
 
-        const selectType$ = fromEvent($selectType, 'change').pipe(getEventValue);
-        const selectGroupCode$ = fromEvent($selectGroupCode, 'change').pipe(getEventValue);
+        function getQueryObject(name) {
+            return obs$ => obs$.pipe(
+                map(value => ({
+                    [`${name}`]: value
+                }))
+            )
+        }
 
+        function getQueryObjFromEvent(name) {
+            return obs$ => obs$.pipe(
+                getEventValue,
+                getQueryObject(name)
+            )
+        }
+
+        function getQueryString(obs$) {
+            return obs$.pipe(
+                map(obj => (`${obj.name}=${obj.value}`))
+            )
+        }
+
+        const selectType$ = fromEvent($selectType, 'change').pipe(getQueryObjFromEvent('type'));
+        const selectGroupCode$ = fromEvent($selectGroupCode, 'change').pipe(getQueryObjFromEvent(
+            'topFinGrpNo'));
+        const inputCode$ = fromEvent($inputCode, 'keydown').pipe(getQueryObjFromEvent('financeCd'));
+
+        /*
         selectType$.pipe(
-            map(type => ajax({
-                url: FSS_BASE_URL,
-                method: 'GET'
-            })),
+            map(queryString => ajax.getJSON(`${FSS_BASE_URL}?${queryString}`)),
             mergeAll()
         ).subscribe(
+            res => console.log(res)
+        );
+        */
+
+        const fssSearch$ = merge(selectType$, selectGroupCode$, inputCode$).pipe(
+            scan((store, value, index) => {
+                return {
+                    ...store,
+                    ...value
+                };
+            }, FSS_DEFAULT)
+        );
+
+        fssSearch$.subscribe(
             res => console.log(res)
         );
     </script>
